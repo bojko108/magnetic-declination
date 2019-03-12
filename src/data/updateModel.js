@@ -46,6 +46,8 @@ const input_filename = 'src/data/wmm.cof',
 
 const data = fs.readFileSync(input_filename, { encoding: 'utf8' });
 const obj = readCof(data);
+obj.num_terms = (obj.n_max * (obj.n_max + 1)) / 2 + obj.n_max;
+
 const json = JSON.stringify(obj, null, 2);
 
 fs.writeFileSync(output_filename, json);
